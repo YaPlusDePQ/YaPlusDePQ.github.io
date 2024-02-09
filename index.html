@@ -1,0 +1,171 @@
+<!-- #A2D416: VERT https://uicolors.app/create 
+
+    file:///data/Documents/programmation/devweb/VoltaireNote-master/dashboard.html
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="new_VoltaireTaNote_icone.png">
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <script src="js/tool.js"></script>
+    <script src="js/logic.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/dashboard.js"></script>
+    <title>VoltaireTesNotes</title>
+</head>
+<body>
+    <div class="navigation">
+        <span><span style="color:#A2D416">Voltaire</span>TaNote</span>
+        
+        <ul>
+            <li> <button id="notation" href="dashboard.html" onclick="changeWindow(this.id)"> Notation </a> </li>
+            <li> <button id="help" onclick="changeWindow(this.id)"> Aide </button> </li>
+            <li> <button id="change-univ"  style="color:#000;" onclick="changeWindow(this.id)"> Changer d'univers </button> </li>
+        </ul>
+    </div>
+
+    <div class="file-input" id="change-univ-panel">
+        <h1>Getting started</h1>
+        <h3>Selectionnez le fichier des "statistiques simples" de votre univers Projet Voltaire.</h3>
+        <input id="file"  class="file-button" type="file" accept=".csv" required onchange="onFileLoaded()">
+        <p>
+            Si vous ne l'avez pas encore téléchargé, vous pouvez le récupérer en vous connectant à votre <a href="https://statistiques.projet-voltaire.fr/guard/login">espace administrateurs.</a></br>
+            Rendez-vous ensuite dans l'onglet "Outils" et cliquez sur le bouton "Statistiques simples". </br>
+            Une fois le fichier téléchargé appuyez sur le bouton ci-dessus et selectionnez le.
+        </p>
+    </div>
+    
+    <div id="notation-panel" style="display: none;">
+        <div class="info">
+            <div class="sphere-info">
+                <h1>Sphère(s)</h1>
+                <div id="sphere-display">
+                    Chargement...
+                </div>
+                
+            </div>
+            <div  id="overall-info" class="overall-info">
+                <h1>Informations Générales</h1>
+                    Chargement...
+            </div>
+        </div>
+    
+        <div class="control">
+            <div class="main-rule">
+                <div class="title-rule"> 
+                    <h1>Règle(s) générale(s)</h1>
+                    
+                    <h3>Règles qui s'appliqueront à tous les élèves.</h3>
+                
+                    <div>
+                        <label>Garder la meilleure note parmi les règles générales</label>
+                        <input type="checkbox" checked id="maxGen">
+                    </div>
+    
+                </div>
+                <div id="main-rule-display" class="rule-display">
+                    Chargement...
+                </div>
+                <button class="add-rule" onclick="addGenRule()">+</button>
+            </div>
+            <div class="custom-rule">
+                <div class="title-rule"> 
+                    <h1>Règle(s) particulière(s)</h1>
+                    <h3>Selectionnez le fichier des élèves à qui appliquer ces règles. (pour plus d'informations aller dans l'onglet "Aide")</h3>
+                    
+                    <input id="file-custom" class="file-button" type="file" accept=".csv" required onchange="onCustUsersFileLoaded()">
+                    <div>
+                        <label>Garder la meilleure note entre les règles générales et particulières</label>
+                        <input type="checkbox" checked id="maxGenCust">
+                    </div>
+                    <div>
+                        <label>Garder la meilleure note parmi les règles particulières</label>
+                        <input type="checkbox" checked id="maxCust">
+                    </div>
+    
+                </div>
+                
+                <div id="custom-rule-display" class="rule-display">
+                    Chargement...
+                </div>
+                <button class="add-rule" onclick="addCustRule()">+</button>
+    
+            </div>
+            
+        </div>
+        <div class="download-wrapper">
+            <button onclick="downloadNotation()" class="download">Télécharger les notes</button>
+        </div>
+        
+    </div>
+    
+    <div id="help-panel"  style="display: none;">
+        <div class="step">
+            <h1>Step 1: télécharger les données requises</h1>
+            <p>
+                Connectez-vous à votre <a href="https://statistiques.projet-voltaire.fr/guard/login">espace administrateurs.</a>
+                Rendez-vous ensuite dans l'onglet "Outils" et cliquez sur le bouton "Statistiques simples". 
+                Une fois le fichier téléchargé revenez sur VoltaireTaNote et dans l'onglet "Changer d'univers" cliquez sur "choisir un fichier" et selectionnez le fichier fraichement téléchargé.
+            </p>
+            <img src="files/step1.png" alt="step1">
+            <hr>
+        </div>
+
+        <div class="step">
+            <h1>Step 2: Noter vos élèves</h1>
+            <p>
+                Vous voici dans le menu principal, vous pouvez ici controler les règles de notation à appliquer aux élèves.
+                Appuyez sur "+" pour en ajouter une nouvelle. Une règle se découpe en deux parties.
+            </p>
+            <img src="files/step2.1.png" alt="step2.1">
+
+            <p>
+                La première contient les conditions d'application de la règle. Vous pouvez créer des conditions complexes en combinant plusieurs conditions en même temps (appuyez sur "+" dans la règle pour ajouter des conditions).
+                La seconde partie permet de terminer le type de notation à effectuer si les conditions de la règle sont toutes remplies. Il y a deux modes de notation:
+                <ul>
+                    <li>Note unique: attribura une note précise à tous les élèves concernés par cette règle;</li>
+                    <li>Proportionnelle au temps/score: attribura une note proportionnelle au temps passé/score obtenu par les élèves concernés par cette règle.
+                        Ce mode possède 3 paramètres : 
+                        <ul>
+                            <li>note minimale : la note minimale qui sera attribuée;</li>
+                            <li>note maximale : la note maximale qui sera attribuée;</li>
+                            <li>note maximale atteinte à : la valeur à partir de laquelle la note maximale est attribuée;</li>
+                        </ul>
+                    </li>
+                </ul>
+                Par exemple la règle ci-dessous donne 20 à tous les élèves avec un score entre 95% et 100% ET au minimum 10h d'entrainement.
+            </p>
+
+            <img src="files/step2.2.png" alt="step2.1">
+            <hr>
+            
+        </div>
+
+        <div class="step">
+            <h1>Step 3: Cas particuliers</h1>
+            <p>
+                Vous pouvez, si vous le désirez, appliquer un système de notation différent pour certains élèves. 
+                Pour cela il faudra dans un premier temps remplir un fichier avec le nom et prénom de chaque élève concerné (Cliquez <button onclick="downloadTemplate()">ici</button> pour télécharger le modèle.).
+                Une fois complété, cliquez sur le boutton "choisir un fichier" dans la partie "Règle(s) particulière(s)" de l'onglet "Notation" et séléctionnez le fichier.
+                Enfin composez vos règles dans la partie "Règle(s) particulière(s)".
+            </p>
+            <img src="files/step3.png" alt="step3">
+            <hr>
+
+        </div>
+
+        <div class="step" style="padding-bottom: 100px;">
+            <h1>Step 4: Télécharger les notes</h1>
+            <p>
+               Une fois les sphères concernées selectionnées et vos règles établies, cliquez sur "Télécharger les notes", pour recevoir un fichier avec les notes.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
+
+

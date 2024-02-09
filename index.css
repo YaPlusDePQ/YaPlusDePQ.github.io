@@ -1,0 +1,313 @@
+@font-face {
+    font-family: 'Myriad'; /*a name to be used later*/
+    font-weight: normal;
+    src: url('./files/MYRIADPRO-REGULAR.OTF') format("opentype"); /*URL to font*/
+}
+
+@font-face {
+    font-family: 'Myriad-b'; /*a name to be used later*/
+    font-weight: bold;
+    src: url('./files/MYRIADPRO-BOLD.OTF') format("opentype"); /*URL to font*/
+}
+
+@font-face {
+    font-family: 'Myriad-db'; /*a name to be used later*/
+    font-weight: 500;
+    src: url('./files/MYRIADPRO-SEMIBOLD.OTF') format("opentype"); /*URL to font*/
+}
+
+
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: Myriad;
+}
+
+.navigation{
+    padding: 10px;
+    padding-top: 15px;
+    padding-left: 20px;
+    border-bottom: #dadada solid 1px;
+}
+
+.navigation *{
+    display: inline-block;
+}
+
+.navigation span{
+    font-size: 24px;
+}
+
+.navigation ul{
+    margin: 0px;
+}
+
+.navigation li{
+    margin-left: 20px;
+}
+
+.navigation button{
+    font-family: Myriad;
+    font-size: 18px;
+    text-decoration:none;
+    border: 0px;
+    background-color: transparent;
+    color: #A1A1A1
+}
+
+.file-input{
+    margin-left: 50px;
+}
+
+.file-input input{
+    font-size: 16px;
+}
+
+.file-button::file-selector-button{
+    border: #a2d416 solid 1px;
+    border-radius: 3px;
+    
+    background-color: #a2d416;
+
+}
+
+.file-input p{
+    font-size: 18px;
+}
+
+
+.info{
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    gap: 10px;
+}
+
+.sphere-info h1{
+    margin: 5px;
+
+}
+
+#sphere-display{
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+}
+
+.sphere{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    min-width: 150px;
+    min-height: 150px;
+    max-width: 150px;
+    max-height: 150px;
+    border: #dadada solid 1px;
+    border-radius: 15px;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.sphere h3{
+    margin: 0px;
+    margin-bottom: 5px;
+}
+
+.sphere-button-actif{
+    margin-top: 20px;
+    border-radius: 5px;
+    width: fit-content;
+    align-self: center;
+    border: #a2d416 solid 1px;
+    background-color: #a2d416;
+    color: #fff;
+}
+
+.sphere-button-unactif{
+    margin-top: 20px;
+    border-radius: 5px;
+    width: fit-content;
+    align-self: center;
+    border: #a1a1a1 solid 1px;
+    background-color: #fff;
+    color: #a1a1a1;
+}
+
+.overall-info{
+    border-left: #dadada solid 1px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.overall-info h1{
+    margin: 5px;
+    
+}
+
+.overall-info span{
+    font-size: 18px;
+}
+ 
+.overall-info span b {
+    color: #a2d416;
+}
+
+.control{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.custom-rule{
+    border-left: #dadada solid 1px;
+    padding-left: 20px;
+}
+
+.main-rule{
+    padding-left: 20px;
+
+}
+
+.title-rule{
+    height: 190px;
+}
+.title-rule div{
+    margin-top: 5px;
+}
+
+
+
+.rule{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.delete-rule{
+    color: #e31a1a;
+    border: #e31a1a solid 1px;
+    border-radius: 5px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background-color: #fff;
+    transition: all .4s ease;
+}
+
+
+.delete-rule:hover{
+    color: #fff;
+    background-color:#e31a1a ;
+}
+
+.logic-wrapper{
+    margin: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-image: linear-gradient(90deg, rgb(117, 117, 117) 60%, rgba(255,255,255,1) 60%) 1;
+    border-right: none;
+    padding: 5px;
+    overflow-x: auto;
+}
+
+.range{
+    display: flex;
+    flex-direction: row;
+    border: #dadada solid 1px;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.range-input{
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 60px;
+}
+
+.logic-opertaor{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.rule-notation{
+    display:flex;
+    flex-direction: row;
+    margin-left: 5px;
+}
+
+.notation-param{
+    display: block;
+}
+
+.notation-param input{
+    width: 60px;
+}
+
+.notation-type{
+    margin-right: 10px;
+}
+
+
+
+
+
+.add-rule{
+    text-align: center;
+    position: relative;
+    left:46%;
+    border: solid #A2D416 1px;
+    border-radius: 100%;
+    font-size: 20px;
+    margin-top: 10px;
+    color: #A2D416;
+    background-color: #fff;
+    transition: all .4s ease;
+}
+
+.add-rule:hover{
+    color: #fff;
+    background-color:#A2D416 ;
+}
+
+.download-wrapper{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    justify-content: center;
+    text-align: center;
+}
+
+.download-wrapper button{
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid #A2D416;
+    color:#A2D416;
+    background-color: #fff;
+    font-weight: bold;
+    transition: all .4s ease;
+}
+
+.download-wrapper button:hover{
+    color: #fff;
+    background-color:#A2D416 ;
+}
+
+#help-panel{
+    background-color: #f5f5f5;
+}
+
+.step{
+    padding: 20px;
+}
+
+.step p{
+    font-size: 18px;
+    width: 50%;
+    text-align: justify;
+}
+
+.step img{
+    border: #A1A1A1;
+    width: 65%;
+}
