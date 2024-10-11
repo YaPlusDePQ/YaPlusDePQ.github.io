@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Linux</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="systeme.js"></script>
+    <script src="command.js"></script>
+</head>
+<body>
+    <div id="start"  >
+        <button onclick="start();">Start</button>
+    </div>
+    <div class="terminal" id="terminal" hidden>
+        <div class="terminal-content" id="terminal-content">
+            <div id="console">
+            </div>
+            <div id="command-line-wrapper" hidden>
+                <span><b id="command-line-location">[USER]</b> $ </span><input id="command-line" oninput="inputWidth(this)" disabled><span class="blink">█</span>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<script>
+    const FILES = {
+        'portrait.why':`
+J'ai décidé de faire ce portrait ainsi pour vous inviter à communiquer à travers une autre culture, ~6celle de l'école, celle de l'informatique.~~
+
+Dans ce portrait, vous allez devoir, à l'aide des commandes et du terminal à votre disposition, vous déplacer dans l'arborescence et ouvrir les fichiers pour découvrir ainsi leur contenu. Généralement, leur nom (avec leur extension) vous donne une indication sur ce qu'ils vont vous présenter et a pour fonction de titre.
+
+J'espère que vous n'aurez pas trop de difficultés à trouver toutes les infos. 
+
+~4Joyeuse balade :)~~
+        `,
+        'passions':{
+            'infor.matique':`
+Évidemment, vu le contexte de ce portrait, l'informatique allait en faire partie.
+C'est une passion relativement récente dans ma vie, ~6car je n'ai pu commencer à coder qu'en 2nde~~, sur les calculatrices programmables. 
+Ce fut d'ailleurs ma première expérience de création et de distribution de logiciels, vu que mes programmes (de triche) étaient installés sur toutes les calculatrices de mes amis et camarades de classe (~2j'aurais pu voir venir que ça me créerait des problèmes plus tard ^^~~).
+La graine avait germé, et j'allais faire de ça mon avenir. 
+
+Aujourd'hui, ma passion n'a fait que grandir avec mes connaissances, et c'est avec plaisir que je continue mon cursus à ~6CY-Tech~~.
+            `,
+            'jeux.mp4':`~2
+                                    ░░░░░░░░░░░░░░░░░
+                                    ░░░░░▀▄░░░▄▀░░░░░
+                                    ░░░░▄█▀███▀█▄░░░░
+                                    ░░░█▀███████▀█░░░
+                                    ░░░█░█▀▀▀▀▀█░█░░░
+                                    ░░░░░░▀▀░▀▀░░░░░░
+                                    ░░░░░░░░░░░░░░░░░~~
+~5À mon avis, je suis loin d'être le premier à le dire dans cet exercice, et je suis loin d'être le dernier.~~
+Les jeux vidéo prennent, avec l'informatique, la majorité de mon temps libre.
+Seul ou avec des amis, c'est toujours un plaisir de se poser devant son ordinateur en vocal, même si, au final, c'est plus pour blablater que pour jouer. C'est un moment de relaxation au même titre que lire un livre pour certains ou bricoler pour d'autres.
+
+L'image du joueur a du mal à se décoller de son stéréotype, et ce n'est pas ~6Pixel Perfect~~ qui aide (~4je vous invite à jeter un nez dans leur local pour comprendre ^^~~).
+`,
+            'sport.if':`
+                                    ~0~f ,.             ~~~~
+                                    ~0~f\\-'__           ~~~~
+                                    ~0~f/ o.__o____     ~~~~
+                                    ~0~f\\/_/ /.___/--,  ~~~~
+                                    ~0~f||\\'            ~~~~
+                                    ~0~f| /             ~~~~
+                                    ~0~f\\_\\             ~~~~
+                                    ~0~f-''             ~~~~
+Alors ici, je vais me distinguer du stéréotype dont, pour l'instant, j'en suis l'incarnation. À côté de toute cette culture geek, je fais ~1beaucoup~~ de sport.
+
+J'en fais ~5entre 3 et 7 fois par semaine~~ en fonction de mes disponibilités.
+Je fais principalement des sports de combat, judo et jiu-jitsu fighting (~0~fceinture noire~~~~ pour les deux), et lorsqu'il n'y a pas d'entraînement à mon club, je vais à la salle de sport. Je pratique le judo depuis ~216 ans~~, le jiu-jitsu depuis ~58~~ ans, et la musculation depuis ~12~~ ans.
+
+Cette pratique relativement intensive m'a permis et me permet encore aujourd'hui de participer à des compétitions à un niveau national, et j'ai la chance d'obtenir au total ~53 podiums en championnats de France~~.
+
+Le sport fait partie intégrante de ma vie et m'a permis de me construire au même titre que l'informatique ou les jeux vidéo.
+`,
+            'classement.mp3':`
+    1. Techno
+    2. Electro/Phonk
+    3. Rock
+    4. Pop
+            `,
+        },
+        'valeurs':{
+            'origin.fr':``,
+            '':``,
+        },
+        'evenement':{
+            'voltaire.tm':`
+                                      #+=====================+#  
+                                    #+~2-------------------------~~+#
+                                    *~2-------------~~==++~2----------~~*
+                                    +~2----~~~1=*+~~~2----~~=######=~2-~~~1=*=~~~2----~~+
+                                    +~2------~~~1=*+~~~2-~~+########~1*=~~~2------~~+
+                                    +~2--------~~~1=*~~*#########~1=~~~2------~~+
+                                    +~2----------~~~1*~~##########~2------~~+
+                                    +~2---------~~=##########=~2------~~+
+                                    +~2---------~~=######~1*+~~~2---------~~+
+                                    +~2--------~~~1*~~#########~1*~~~2--------~~+
+                                    +~2------~~~1=*~~###########~1*=~~~2------~~+
+                                    +~2----~~~1=*+~~~2----~~=+*#####~1*+*=~~~2----~~+
+                                    *~2---------------------------~~+
+                                    #+~2-------------------------~~+#
+                                      #+=====================+#              
+Alors voilà sûrement l'un des plus grands "événements" de ma vie, l'histoire de ~2VoltaireTaMere~~.
+Je pense que vous en avez entendu parler, mais dans le doute, je vous fais un résumé rapide :
+~2VoltaireTaMere~~, c'est le nom du logiciel que je crée, qui se chargeait de faire le ~2p0rojet Voltaire~~ de manière automatique. Un clic et le robot était lancé, et réalisait votre niveau avec une précision et dans une fenêtre de temps définie par son utilisateur.
+Voilà, ça c'est la machine qu'etait ~2VoltaireTaMere~~.
+
+Le robot a eu un succès fou et a eu un total de ~513 000 utilisateurs à travers la France~~. Cependant, avec une popularité aussi grande, forcément, le bruit est venu aux oreilles de l'administration, et en juillet 2022, ~7~9j'ai été convoqué pour "triche et incitation à la triche" devant un conseil de discipline~~~~.
+L'histoire se finit bien car j'ai écopé de travaux d'intérêt général au sein de CY-Tech, et ma tâche a été d'assister Sophie Mano-Avril dans la correction du ~2projet Voltaire~~.
+`
+        }, 
+        'corbeille':{
+            'pacif.bde':`
+J'adore mon BDE, merci BDE pour l'alcoolisme :D
+`,
+
+        }
+    };
+
+    FILES['passions']['..'] = FILES;
+    FILES['valeurs']['..'] = FILES;
+    FILES['evenement']['..'] = FILES;
+    FILES['corbeille']['..'] = FILES;
+
+    var currentLocation = FILES
+    var currentLocationName = 'USER'
+
+    document.addEventListener('keydown', function(event) {
+        let input = document.getElementById('command-line');
+        input.focus();
+    });
+
+    document.getElementById('command-line').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            const functionName = this.value.trim(); 
+            executeCmd(functionName, FILES);
+            this.value = ''; 
+            inputWidth(this)
+        }
+    });
+
+</script>
+</html>

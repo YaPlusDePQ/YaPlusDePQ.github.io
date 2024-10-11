@@ -1,0 +1,54 @@
+body {
+    background-color: #2e3436; /* Couleur de fond du terminal */
+    color: #ffffff; /* Couleur du texte */
+    font-family: 'Courier New', Courier, monospace; /* Police de caractère monospaced */
+    height: 100vh; /* Hauteur de la vue */
+    display: flex; /* Utilisation du flexbox */
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    margin: 0; /* Supprimer les marges par défaut */
+}
+
+.terminal {
+    background-color: #1c1f22; /* Couleur de fond de la fenêtre du terminal */
+    border: 2px solid #4e5452; /* Bordure du terminal */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 10px; /* Espace intérieur */
+    width: 100%; /* Largeur du terminal */
+    min-height: 97%;
+    max-width: 100%; /* Largeur maximale */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ombre */
+}
+
+
+.terminal-content p{
+    margin: 5px;
+    max-width: 800px;
+    white-space: pre-wrap;
+}
+
+#command-line{
+    font: inherit;
+    width: 0;
+    background: transparent;
+    border: none;
+    color: #fff;
+    caret-color: transparent;
+}
+
+#command-line:focus{
+    outline: none;
+}
+
+@keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+}
+  
+.blink {
+    animation: blink 1s infinite step-start;
+}
