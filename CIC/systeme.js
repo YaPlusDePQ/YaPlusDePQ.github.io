@@ -56,11 +56,13 @@ function addColor(msg){
         '~d':'<span style="background:#ebeb34">',
         '~e':'<span style="background:#34ebe8">',
         '~f':'<span style="background:#fff">',
+        '~g':'<span style="color:#eb9334">',
+        '~h':'<span style="background:#eb9334">',
         '~~':'</span>'
     };
     msg = msg.replace(/\n/g, '</br>');
 
-    return msg.replace(/~[0-9a-f]|~~/g, (match) => {
+    return msg.replace(/~[0-9a-h]|~~/g, (match) => {
         return tagToColor[match] || '';
     });
 
